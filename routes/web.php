@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Models\User;
+use App\Models\Image;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,4 +18,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/one-to-one-polymorphic', function () {
+    $user = User::first();
+
+    $user->image()->save(
+        new Image(['path' => 'images/image.png'])
+    );
+
+    dd($user->image);
 });
