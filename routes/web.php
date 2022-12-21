@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Models\User;
 use App\Models\Image;
+use App\Models\Course;
+use App\Models\Comment;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,4 +30,19 @@ Route::get('/one-to-one-polymorphic', function () {
     );
 
     dd($user->image);
+});
+
+Route::get('/one-to-many-polymorphic', function () {
+    /* $course = Course::first();
+
+    $course->comments()->create([
+        'subject' => 'Novo comentário',
+        'content' => 'Apenas um comentário legal novo'
+    ]);
+
+    dd($course->comments); */
+
+    $comment = Comment::find(1);
+
+    dd($comment->commentable);
 });
