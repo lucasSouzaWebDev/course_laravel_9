@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Image;
 use App\Models\Course;
 use App\Models\Comment;
+use App\Models\Tag;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,4 +46,12 @@ Route::get('/one-to-many-polymorphic', function () {
     $comment = Comment::find(1);
 
     dd($comment->commentable);
+});
+
+Route::get('/many-to-many-polymorphic', function () {
+    $user = User::first();
+
+    //$user->tags()->attach(1);
+
+    dd($user->tags);
 });
